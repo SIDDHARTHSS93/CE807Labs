@@ -1,0 +1,27 @@
+Python 3.6.6 (v3.6.6:4cf1f54eb7, Jun 27 2018, 03:37:03) [MSC v.1900 64 bit (AMD64)] on win32
+Type "copyright", "credits" or "license()" for more information.
+>>> 
+ RESTART: C:\Users\admin\Desktop\labs\CE807Labs\ce807 assignments\Assignment 1\Assignment1\ass1.py 
+Length of the training dataset: 30000
+Length of the test dataset: 39152
+
+The Confusion Matrix is as below:
+[[  358    38    69    20   962]
+ [   89   179    23    12  1088]
+ [  152    85   272    21  1428]
+ [   24     8     6   246  1350]
+ [   24   180    88     2 32424]]
+Accuracy of predicted output over true output: 0.8551905589046694
+              precision    recall  f1-score   support
+
+       I-LOC       0.55      0.25      0.34      1447
+      I-MISC       0.37      0.13      0.19      1391
+       I-ORG       0.59      0.14      0.23      1958
+       I-PER       0.82      0.15      0.25      1634
+           O       0.87      0.99      0.93     32718
+
+   micro avg       0.86      0.86      0.86     39148
+   macro avg       0.64      0.33      0.39     39148
+weighted avg       0.82      0.86      0.82     39148
+
+>>> 

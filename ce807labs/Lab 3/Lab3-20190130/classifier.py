@@ -55,13 +55,16 @@ def read_files(path):
                     for line in f:
                         if past_header:
                             lines.append(line)
+                            print(line)
                         elif line == NEWLINE:
                             past_header = True
                     f.close()
                     content = NEWLINE.join(lines)
                     yield file_path, content
+    print()
 
-
+read_files('C:/Users/admin/Desktop/labs/CE807Labs/ce807labs/Lab 3/Lab3-20190130/data')
+'''                    
 def build_data_frame(path, classification):
     rows = []
     index = []
@@ -104,4 +107,6 @@ for train_indices, test_indices in k_fold:
 print('Total emails classified:', len(data))
 print('Score:', sum(scores)/len(scores))
 print('Confusion matrix:')
+
 print(confusion)
+'''

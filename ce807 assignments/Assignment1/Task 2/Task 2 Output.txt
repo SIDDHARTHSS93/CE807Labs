@@ -1,0 +1,7 @@
+Python 3.6.6 (v3.6.6:4cf1f54eb7, Jun 27 2018, 03:37:03) [MSC v.1900 64 bit (AMD64)] on win32
+Type "copyright", "credits" or "license()" for more information.
+>>> 
+ RESTART: C:\Users\admin\Desktop\labs\CE807Labs\ce807 assignments\Assignment 1\Assignment1\ass1.py 
+Length of the training dataset: 30000
+Length of the test dataset: 39152
+Accuracy of a Perceptron Algorithm is: 90.81 +/- 0.0
