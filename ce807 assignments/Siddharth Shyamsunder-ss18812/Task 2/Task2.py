@@ -14,6 +14,7 @@ from sklearn import preprocessing
 from sklearn.model_selection import KFold, cross_val_score
 from sklearn.linear_model import Perceptron
 from sklearn.metrics import confusion_matrix,accuracy_score,classification_report 
+#Reading the training data
 data=open('aij-wikiner-en-wp2',encoding='utf-8')
 data=data.read()
 data=data.split('|')
@@ -52,7 +53,7 @@ with open("ML.csv","a",encoding='utf-8') as csvFile:
     writer=csv.writer(csvFile)
     writer.writerows(csvdata)
 csvFile.close()
-
+#Reading the test data
 data2=open('wikigold.conll.txt',encoding='utf-8')
 data2=data2.read()
 data2=data2.split('|')
@@ -93,7 +94,7 @@ csvFile.close()
 data=pd.read_csv('ML.csv')
 
 data2=pd.read_csv('MLOP.csv')
-
+#Encoding features and output
 frames=[data,data2]
 result=pd.concat(frames,sort=True)
 result=result[result.NER!='B-MISC']
@@ -111,6 +112,7 @@ Y=encoder.fit_transform(result.iloc[0:count,0].astype(str))
 Y1=encoder.fit_transform(result.iloc[count:,0].astype(str))
 
 listt=list(encoder.classes_)
+#Performing Perceptron Algorithm
 clf=Perceptron(tol=1e-3,random_state=0)
 dt=clf.fit(X,Y)
 

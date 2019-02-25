@@ -14,6 +14,7 @@ from sklearn import preprocessing
 from sklearn.model_selection import KFold, cross_val_score
 from sklearn.linear_model import Perceptron
 from sklearn.metrics import confusion_matrix,accuracy_score,classification_report 
+#Reading the training set
 data=open('aij-wikiner-en-wp2',encoding='utf-8')
 data=data.read()
 data=data.split('|')
@@ -52,7 +53,7 @@ with open("ML.csv","a",encoding='utf-8') as csvFile:
     writer=csv.writer(csvFile)
     writer.writerows(csvdata)
 csvFile.close()
-
+#Reading the test set
 data2=open('wikigold.conll.txt',encoding='utf-8')
 data2=data2.read()
 data2=data2.split('|')
@@ -89,7 +90,7 @@ with open("MLOP.csv","a",encoding='utf-8') as csvFile:
     writer=csv.writer(csvFile)
     writer.writerows(csvdata)
 csvFile.close()
-
+#Encoding the features and target
 data=pd.read_csv('ML.csv')
 
 data2=pd.read_csv('MLOP.csv')
@@ -111,15 +112,18 @@ Y=encoder.fit_transform(result.iloc[0:count,0].astype(str))
 Y1=encoder.fit_transform(result.iloc[count:,0].astype(str))
 
 listt=list(encoder.classes_)
+#Pperforming Perceptron training
 clf=Perceptron(tol=1e-3,random_state=0)
 dt=clf.fit(X,Y)
 
 scores = cross_val_score(dt, X, Y, cv=5)
 print("Accuracy of a Perceptron Algorithm is:",round(np.mean((scores*100)),2),"+/-",round(np.std(scores*100),0))
-
+#predicting the test output
 Y2=dt.predict(X2)
 Y1=list(encoder.inverse_transform(Y1))
 Y2=list(encoder.inverse_transform(Y2))
+#Evaluation
+print('The confusion Matrix is as Below:\n')
 print(confusion_matrix(Y1,Y2,labels=listt))
 print('Accuracy of predicted output over true output:',accuracy_score(Y1,Y2))
 print(classification_report(Y1,Y2,target_names=listt))
